@@ -8,7 +8,7 @@ def calculate_PRS(snps_weights_file, genotypes_file, out_file):
     snps_weights = pd.read_csv(snps_weights_file, sep='\t', header=None, names=['SNP', 'Weight'])
     
     # Load genotypes
-    genotypes = pd.read_csv(genotypes_file + '.bed', sep='\t', header=None, dtype=np.uint8)
+    genotypes = pd.read_csv(genotypes_file + '.bed', sep='\t', header=None, dtype=np.uint8, engine='python')
     
     # Convert genotypes to 0, 1, 2 coding
     genotypes = genotypes.iloc[:, 4:].values.reshape(-1, 2)
